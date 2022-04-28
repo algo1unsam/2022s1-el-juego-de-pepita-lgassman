@@ -1,0 +1,33 @@
+import pepita.*
+import wollok.game.*
+import extras.*
+import comidas.*
+
+program pepitaGame {
+	game.title("El juego de pepita")
+	game.height(10)
+	game.width(10)
+	game.boardGround("fondo.jpg")
+	
+	game.addVisual(silvestre)
+	game.addVisual(manzana)
+	game.addVisual(alpiste)
+	
+	game.addVisual(pepita)
+	
+	
+	keyboard.left().onPressDo(  { pepita.mover(izquierda) } )
+	keyboard.right().onPressDo(  { pepita.mover(derecha) } )
+	keyboard.up().onPressDo(  { pepita.mover(arriba) } )
+	keyboard.down().onPressDo(  { pepita.mover(abajo) } )
+	keyboard.a().onPressDo( {pepita.mover(izquierda)})
+	
+	game.onCollideDo(manzana, {alguien => alguien.comer(manzana)})
+	game.onCollideDo(alpiste, {alguien => alguien.comer(alpiste)})
+	//game.onCollideDo(pepita, {alguien => pepita.comer(alguien)})
+	
+	game.showAttributes(pepita)
+	
+	game.start()
+
+}
