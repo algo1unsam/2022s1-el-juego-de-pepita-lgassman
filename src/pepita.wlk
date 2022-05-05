@@ -22,9 +22,9 @@ object pepita {
 	}
 	
 	
-	method text() {
-		return "energia: " + energia
-	}
+//	method text() {
+//		return "energia: " + energia
+//	}
 	
 	method image() {
 		return "pepita-"+ self.nombreEstado() + ".png"

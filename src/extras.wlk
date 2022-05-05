@@ -30,9 +30,9 @@ object silvestre{
 	
 	const property imagen = "silvestre.png"
 	
-//	method image() {
-//		return imagen
-//	}
+	method image() {
+		return imagen
+	}
 	
 	method position() {
 		return game.at(pepita.position().x(), 0)

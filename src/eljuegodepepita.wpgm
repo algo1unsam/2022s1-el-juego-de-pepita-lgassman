@@ -27,7 +27,7 @@ program pepitaGame {
 	//game.onCollideDo(pepita, {alguien => pepita.comer(alguien)})
 	
 	game.showAttributes(pepita)
-	
+		
 	game.start()
 
 }
