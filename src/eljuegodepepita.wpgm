@@ -2,6 +2,8 @@ import pepita.*
 import wollok.game.*
 import extras.*
 import comidas.*
+import randomizer.*
+import generadorComida.*
 
 program pepitaGame {
 	game.title("El juego de pepita")
@@ -10,11 +12,16 @@ program pepitaGame {
 	game.boardGround("fondo.jpg")
 	
 	game.addVisual(silvestre)
-	game.addVisual(manzana)
-	game.addVisual(alpiste)
+//	game.addVisual(new Manzana())
+//	game.addVisual(new Manzana(position=game.at(2,2)))
+//	game.addVisual(new Alpiste())
 	
+	game.addVisual(new Muro(position=game.at(3,3)))
+	game.addVisual(new Muro(position=game.at(4,3)))
+
+	game.addVisual(nido)
 	game.addVisual(pepita)
-	
+		
 	
 	keyboard.left().onPressDo(  { pepita.mover(izquierda) } )
 	keyboard.right().onPressDo(  { pepita.mover(derecha) } )
@@ -22,9 +29,19 @@ program pepitaGame {
 	keyboard.down().onPressDo(  { pepita.mover(abajo) } )
 	keyboard.a().onPressDo( {pepita.mover(izquierda)})
 	
-	game.onCollideDo(manzana, {alguien => alguien.comer(manzana)})
-	game.onCollideDo(alpiste, {alguien => alguien.comer(alpiste)})
-	//game.onCollideDo(pepita, {alguien => pepita.comer(alguien)})
+//	game.onCollideDo(manzana, {alguien => alguien.comer(manzana)})
+//	game.onCollideDo(alpiste, {alguien => alguien.comer(alpiste)})
+//	game.onCollideDo(nido, {alguien => alguien.ganar()})
+//	game.onCollideDo(silvestre, {alguien => alguien.perder()})
+
+	game.onCollideDo(pepita, {algo => algo.teEncontro(pepita)})
+	
+	
+	game.onTick(800, "GRAVEDAD", { 
+		pepita.gravedad()
+		generadorComida.gravedad()
+	})
+	game.onTick(3000, "NUEVO_ALIMENTO", { generadorComida.generar() })
 	
 	game.showAttributes(pepita)
 		

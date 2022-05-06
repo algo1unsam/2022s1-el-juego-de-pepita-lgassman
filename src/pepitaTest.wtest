@@ -9,6 +9,7 @@ describe "Tests de Pepita" {
 	}
 
 	test "Al comer pepita aumenta su energia" {
+		const manzana = new Manzana()
 		game.addVisual(manzana)
 		pepita.comer(manzana)
 		assert.equals(120, pepita.energia())
